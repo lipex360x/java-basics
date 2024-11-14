@@ -4,13 +4,27 @@ public class User {
     showTv(lg);
     lg.switchOn();
     showTv(lg);
+    lg.increaseVolume();
+    lg.increaseVolume();
+    lg.increaseVolume();
+    lg.increaseVolume();
+    showTv(lg);
+    lg.decreaseVolume();
+    showTv(lg);
+    lg.increaseChannel();
+    lg.increaseChannel();
+    showTv(lg);
+    lg.swichChannel(45);
+    showTv(lg);
+    lg.swichChannel(151);
+    showTv(lg);
   }
 
   public static void showTv(SmartTv tv) {
-    System.out.println("\n----------------------");
+    System.out.println();
     System.out.println("TV is On: " + tv.isOn);
     System.out.println("Current Channel: " + tv.channel);
     System.out.println("Current Volume: " + tv.volume);
-    System.out.println("----------------------");
+    System.out.println("----------------------\n");
   }
 }
