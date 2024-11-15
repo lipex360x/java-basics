@@ -14,15 +14,15 @@ public class SmartTv {
   }
 
   public void increaseVolume() {
-    if (volume <= 100) volume++;
+    if (volume < 100) volume++;
   }
 
   public void decreaseVolume() {
-    if (volume >= 0) volume--;
+    if (volume > 0) volume--;
   }
 
   public void increaseChannel() {
-    if (channel <= 150) channel++;
+    if (channel < 150) channel++;
   }
 
   public void decreaseChannel() {

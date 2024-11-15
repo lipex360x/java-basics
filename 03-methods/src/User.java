@@ -4,12 +4,15 @@ public class User {
     showTv(lg);
     lg.switchOn();
     showTv(lg);
-    lg.increaseVolume();
-    lg.increaseVolume();
-    lg.increaseVolume();
-    lg.increaseVolume();
+    for (int x = 0; x < 250; x++) {
+      lg.increaseVolume();
+    }
     showTv(lg);
     lg.decreaseVolume();
+    showTv(lg);
+    for (int x = 0; x < 250; x++) {
+      lg.decreaseVolume();
+    }
     showTv(lg);
     lg.increaseChannel();
     lg.increaseChannel();
