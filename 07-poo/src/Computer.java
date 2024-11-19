@@ -3,5 +3,13 @@ public class Computer {
     MSNMessage msn = new MSNMessage();
     msn.enviarMensagem();
     msn.receberMensagem();
+
+    FacebookMessage facebook = new FacebookMessage();
+    facebook.enviarMensagem();
+    facebook.receberMensagem();
+
+    TelegramMessage telegram = new TelegramMessage();
+    telegram.enviarMensagem();
+    telegram.receberMensagem();
   }
 }
