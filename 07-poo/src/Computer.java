@@ -1,3 +1,7 @@
+import apps.FacebookMessage;
+import apps.MSNMessage;
+import apps.TelegramMessage;
+
 public class Computer {
   public static void main(String[] args) {
     MSNMessage msn = new MSNMessage();
