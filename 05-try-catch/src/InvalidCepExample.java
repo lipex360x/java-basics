@@ -1,3 +1,3 @@
-public class InvalidCepExample extends Exception{
+public class InvalidCepExample extends Exception {
   
 }
