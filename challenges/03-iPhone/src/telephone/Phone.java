@@ -1,4 +1,4 @@
-package phone;
+package telephone;
 
 import common.Errors;
 

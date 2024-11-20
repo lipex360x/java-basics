@@ -1,8 +1,8 @@
-package ipod;
+package music;
 
 import common.Errors;
 
-public class Ipod implements MusicApp {
+public class Ipod implements Music {
   private String music = null;
 
   @Override

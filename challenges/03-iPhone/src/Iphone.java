@@ -1,13 +1,13 @@
 import browser.Browser;
 import browser.Safari;
-import ipod.Ipod;
-import ipod.MusicApp;
-import phone.Telephone;
-import phone.Phone;
+import music.Ipod;
+import music.Music;
+import telephone.Phone;
+import telephone.Telephone;
 
 public class Iphone  {
   public static void main(String[] args) throws Exception {
-    MusicApp ipod = new Ipod();
+    Music ipod = new Ipod();
     ipod.play();
     ipod.selectMusic("Better in Collor - Lizzy");
     ipod.play();

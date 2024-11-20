@@ -1,4 +1,4 @@
-package ipod;
+package music;
 
 public class InvalidMusicError extends Exception {
   
