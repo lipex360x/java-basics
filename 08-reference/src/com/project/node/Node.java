@@ -1,4 +1,4 @@
-package com.project.reference.node;
+package com.project.node;
 
 public class Node {
   private String content;

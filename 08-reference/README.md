@@ -1,18 +1,62 @@
-## Getting Started
+## Generics
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+* Unknown Wildcards (Unbounded)
 
-## Folder Structure
+* Bounded Wildcard (Upper/Lower Bounded)
 
-The workspace contains two folders by default, where:
+* Convention
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+---
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+### Unknown Wildcards (Unbounded)
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+```java
+public void printList(List<?> list) {
+  for(Object obj : list) {
+    System.out.println(obj);
+  }
+}
 
-## Dependency Management
+List<Student> students = new List<Student>();
+printList(students);
+```
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+---
+
+### UpperBounded Wildcard
+
+```java
+public void printList(List<? extends User> list) {
+  for(User user : list) {
+    System.out.println(user);
+  }
+}
+
+List<Student> students = new List<Student>();
+printList(students);
+```
+
+---
+
+### LowerBounded Wildcard
+
+```java
+public void printList(List<? super User> list) {
+  for(User user : list) {
+    System.out.println(user);
+  }
+}
+
+List<Student> students = new List<Student>();
+printList(students);
+```
+
+---
+
+### Convention
+
+**K** - Key: Map<K,V>
+**V** - Value: Map<K,V>
+**E** - Element: List<E>
+**T** - Type: Collections#addAll
+**?** - Generic
