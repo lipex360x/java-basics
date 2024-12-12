@@ -14,24 +14,19 @@ public class Queue {
 
   public Node first() {
     if (isEmpty()) return null;
-    return getFirstItem(this.referenceNode);
+    return this.getFirstItem(this.referenceNode);
   }
 
   public Node dequeue() {
     Node removedElement = this.getFirstItem(this.referenceNode);
-    Node lastElement = this.referenceNode;
-    Node aux = this.referenceNode;
-    while (true) {
-      if(lastElement.getReferenceNode() != null) {
-        aux = lastElement;
-        lastElement = lastElement.getReferenceNode();
-      } else {
-        aux.setReferenceNode(null);
-        break;
-      }
-    }
-    System.out.println("Last element: " + lastElement);
+    this.referenceNode = this.removeFirstItem(this.referenceNode);
     return removedElement;
+  }
+
+  private Node removeFirstItem(Node currentNode) {
+    if (currentNode == null || currentNode.getReferenceNode() == null) return null;
+    currentNode.setReferenceNode(this.removeFirstItem(currentNode.getReferenceNode()));
+    return currentNode;
   }
 
   public boolean isEmpty() {
