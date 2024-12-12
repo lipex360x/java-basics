@@ -1,10 +1,10 @@
 package queue;
 
-public class Node {
-  private Object content;
-  private Node referenceNode;
+public class Node<T> {
+  private T content;
+  private Node<T> referenceNode;
 
-  public Node(Object content) {
+  public Node(T content) {
     this.referenceNode = null;
     this.content = content;
   }
@@ -13,15 +13,15 @@ public class Node {
     return this.content;
   }
 
-  public void setContent(Object content) {
+  public void setContent(T content) {
     this.content = content;
   }
 
-  public Node getReferenceNode() {
+  public Node<T> getReferenceNode() {
     return this.referenceNode;
   }
 
-  public void setReferenceNode(Node referenceNode) {
+  public void setReferenceNode(Node<T> referenceNode) {
     this.referenceNode = referenceNode;
   }
 

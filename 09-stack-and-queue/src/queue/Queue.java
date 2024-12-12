@@ -1,43 +1,50 @@
 package queue;
 
-public class Queue {
-  private Node referenceNode;
-
+public class Queue<T> {
+  private Node<T> referenceNode;
+  
   public Queue() {
     this.referenceNode = null;
   }
-
-  public void enqueue(Node newNode) {
+  
+  public void enqueue(T object) {
+    Node<T> newNode = new Node<>(object);
     newNode.setReferenceNode(this.referenceNode);
     this.referenceNode = newNode;
   }
-
-  public Node first() {
+  
+  @SuppressWarnings("unchecked")
+  public T first() {
     if (isEmpty()) return null;
-    return this.getFirstItem(this.referenceNode);
+    return (T) this.getFirstItem(this.referenceNode).getContent();
   }
-
-  public Node dequeue() {
-    Node removedElement = this.getFirstItem(this.referenceNode);
-    this.referenceNode = this.removeFirstItem(this.referenceNode);
-    return removedElement;
+  
+  @SuppressWarnings("unchecked")
+  public T dequeue() {
+    Node<T> removedElement = this.getFirstItem(this.referenceNode);
+    this.referenceNode = this.removeLastElement(this.referenceNode);
+    return (T) removedElement.getContent();
   }
-
-  private Node removeFirstItem(Node currentNode) {
-    if (currentNode == null || currentNode.getReferenceNode() == null) return null;
-    currentNode.setReferenceNode(this.removeFirstItem(currentNode.getReferenceNode()));
-    return currentNode;
+  
+  private Node<T> removeLastElement(Node<T> element) {
+    if (element == null || element.getReferenceNode() == null) return null;
+    element.setReferenceNode(removeLastElement(element.getReferenceNode()));
+    return element;
   }
-
+  
   public boolean isEmpty() {
     return this.referenceNode == null;
   }
-
-  private Node getFirstItem(Node element) {
-    if(element.getReferenceNode() == null) return element;
+  
+  private Node<T> getFirstItem(Node<T> element) {
+    if (this.isElementNull(element)) return element;
     return this.getFirstItem(element.getReferenceNode());
   }
 
+  private boolean isElementNull(Node<T> element) {
+    return element.getReferenceNode() == null;
+  }
+  
   @Override
   public String toString() {
     String returnData = "-----------------\n";
@@ -47,9 +54,9 @@ public class Queue {
     returnData += "\n=================";
     return returnData;
   }
-
-  private String getQueueData(Node currentNode) {
-    if(currentNode == null) return "";
+  
+  private String getQueueData(Node<T> currentNode) {
+    if (currentNode == null) return "";
     return currentNode.getContent() + " --> " + this.getQueueData(currentNode.getReferenceNode());
   }
 }
