@@ -34,12 +34,12 @@ public class Stack {
     returnData += "      Stack\n";
     returnData += "-----------------\n";
     returnData += this.getStackData(this.referenceNode);
-    returnData += "=================";
+    returnData += "\n=================";
     return returnData;
   }
 
   private String getStackData(Node currentNode) {
     if(currentNode == null) return "";
-    return currentNode.getData() + "\n" + this.getStackData(currentNode.getReferenceNode());
+    return " <-- " + currentNode.getContent() + this.getStackData(currentNode.getReferenceNode());
   }
 }

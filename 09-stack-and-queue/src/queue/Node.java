@@ -1,20 +1,20 @@
-package stack;
+package queue;
 
 public class Node {
-  private int content;
+  private Object content;
   private Node referenceNode;
 
-  public Node(int data) {
+  public Node(Object content) {
     this.referenceNode = null;
-    this.content = data;
+    this.content = content;
   }
 
-  public int getContent() {
+  public Object getContent() {
     return this.content;
   }
 
-  public void setContent(int data) {
-    this.content = data;
+  public void setContent(Object content) {
+    this.content = content;
   }
 
   public Node getReferenceNode() {
