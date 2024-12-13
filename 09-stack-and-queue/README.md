@@ -2,6 +2,7 @@
 
 * Stack (LIFO: Last In First Out)
 * Queue (FIFO: First In First Out)
+* List
 
 ---
 
@@ -47,3 +48,13 @@ public String toString() {
 * enqueue();
 * dequeue();
 * isEmpty();
+
+---
+
+### List
+
+**Methods**
+
+* add();
+* remove();
+* get();
