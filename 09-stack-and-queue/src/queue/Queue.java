@@ -15,33 +15,33 @@ public class Queue<T> {
   
   @SuppressWarnings("unchecked")
   public T first() {
-    if (isEmpty()) return null;
-    return (T) this.getFirstItem(this.referenceNode).getContent();
+    if (isQueueEmpty()) return null;
+    return (T) this.getFirstElementFromQueue(this.referenceNode).getContent();
   }
   
   @SuppressWarnings("unchecked")
   public T dequeue() {
-    Node<T> removedElement = this.getFirstItem(this.referenceNode);
-    this.referenceNode = this.removeLastElement(this.referenceNode);
+    Node<T> removedElement = this.getFirstElementFromQueue(this.referenceNode);
+    this.referenceNode = this.removeLastElementFromQueue(this.referenceNode);
     return (T) removedElement.getContent();
   }
   
-  private Node<T> removeLastElement(Node<T> element) {
-    if (element == null || element.getReferenceNode() == null) return null;
-    element.setReferenceNode(removeLastElement(element.getReferenceNode()));
+  private Node<T> removeLastElementFromQueue(Node<T> element) {
+    if (element == null || this.isReferenceElementNull(element)) return null;
+    element.setReferenceNode(removeLastElementFromQueue(element.getReferenceNode()));
     return element;
   }
   
-  public boolean isEmpty() {
-    return this.referenceNode == null;
-  }
-  
-  private Node<T> getFirstItem(Node<T> element) {
-    if (this.isElementNull(element)) return element;
-    return this.getFirstItem(element.getReferenceNode());
+  private Node<T> getFirstElementFromQueue(Node<T> element) {
+    if (this.isReferenceElementNull(element)) return element;
+    return this.getFirstElementFromQueue(element.getReferenceNode());
   }
 
-  private boolean isElementNull(Node<T> element) {
+  private boolean isQueueEmpty() {
+    return this.referenceNode == null;
+  }
+
+  private boolean isReferenceElementNull(Node<T> element) {
     return element.getReferenceNode() == null;
   }
   
