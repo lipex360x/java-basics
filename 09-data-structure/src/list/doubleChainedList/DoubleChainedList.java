@@ -47,18 +47,28 @@ public class DoubleChainedList<T> extends Utils<T> {
   public Node<T> remove(int index) {
     this.validateIndex(index);
     Node<T> removedNode = this.readPosition(index);
-    if (this.isFirstPosition(index)) {
-      this.firstNode = removedNode.getNext();
-      removedNode.getNext().setPrev(null);
-      removedNode.setNext(null);
-    } else if (this.isLastPosition(index)) {
-      removedNode.getPrev().setNext(null);
-    } else {
-      removedNode.getPrev().setNext(removedNode.getNext());
-      removedNode.getNext().setPrev(removedNode.getPrev());
+    switch (getIndexPosition(index)) {
+      case "FIRST":
+        this.firstNode = removedNode.getNext();
+        removedNode.getNext().setPrev(null);
+        removedNode.setNext(null);
+        break;
+      case "LAST": 
+        removedNode.getPrev().setNext(null);
+        break;
+      default:
+        removedNode.getPrev().setNext(removedNode.getNext());
+        removedNode.getNext().setPrev(removedNode.getPrev());
+        break;
     }
     this.listSize--;
     return removedNode;
+  }
+
+  private String getIndexPosition(int index) {
+    if (this.isFirstPosition(index)) return "FIRST";
+    if (this.isLastPosition(index)) return "LAST";
+    return "MIDDLE";
   }
 
   public T get(int index) {
