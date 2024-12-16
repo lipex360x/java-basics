@@ -24,4 +24,11 @@ public class Utils<T> {
     returnString += this.getListData(currentNode.getNext());
     return returnString;
   }
+
+  protected String getChainList(Node<T> currentNode) {
+    if (currentNode == null) return "";
+    String returnString = this.divisor(5) + currentNode.getContent() + "\n";
+    returnString += this.getListData(currentNode.getNext());
+    return returnString;
+  }
 }

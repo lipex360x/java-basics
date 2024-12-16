@@ -9,6 +9,7 @@ public class Node<T> {
   public Node(T content) {
     this.prev = null;
     this.next = null;
+    this.reference = null;
     this.content = content;
   }
 
@@ -45,16 +46,6 @@ public class Node<T> {
   }
 
   public String toString() {
-    return "Node { content: " + this.content + "}";
-  }
-
-  public String chainedToString() {
-    String str = this.toString();
-    str += !isNextNull() ? "-->" + this.next.toString() : "--> null";
-    return str;
-  }
-
-  private boolean isNextNull() {
-    return this.next == null;
+    return "Node { content: " + this.content + " }";
   }
 }
