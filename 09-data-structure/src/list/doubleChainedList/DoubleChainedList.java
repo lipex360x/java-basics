@@ -44,9 +44,34 @@ public class DoubleChainedList<T> extends Utils<T> {
     this.listSize++;
   }
 
+  public Node<T> remove(int index) {
+    this.validateIndex(index);
+    Node<T> removedNode = this.readPosition(index);
+    if (this.isFirstPosition(index)) {
+      this.firstNode = removedNode.getNext();
+      removedNode.getNext().setPrev(null);
+      removedNode.setNext(null);
+    } else if (this.isLastPosition(index)) {
+      removedNode.getPrev().setNext(null);
+    } else {
+      removedNode.getPrev().setNext(removedNode.getNext());
+      removedNode.getNext().setPrev(removedNode.getPrev());
+    }
+    this.listSize--;
+    return removedNode;
+  }
+
   public T get(int index) {
     this.validateIndex(index);
     return this.readPosition(index).getContent();
+  }
+
+  private boolean isFirstPosition(int index) {
+    return index == 0;
+  }
+
+  private boolean isLastPosition(int index) {
+    return index == this.listSize - 1;
   }
 
   private Node<T> readPosition(int index) {

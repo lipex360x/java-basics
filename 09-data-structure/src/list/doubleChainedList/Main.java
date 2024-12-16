@@ -12,6 +12,10 @@ public class Main {
     list.add("test");
     System.out.println("size: " + list.size());
     System.out.println(list.toString());
-    System.out.println(list.get(0));
+    System.out.println("Removed: " + list.remove(0));
+    System.out.println(list.toString());
+    System.out.println(list.remove(0).getContent() == "node 2");
+    System.out.println(list.remove(2).getContent() == "test");
+    System.out.println(list.remove(1).getContent() == "node 4");
   }
 }
