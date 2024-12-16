@@ -6,9 +6,10 @@ public class Main {
     list.add("node 1");
     list.add("node 2");
     list.add("node 3");
+    list.add("node 4");
     System.out.println(list.toString());
     System.out.println("size: " + list.size());
-    list.add(0, "test");
+    list.add("test");
     System.out.println("size: " + list.size());
     System.out.println(list.toString());
     System.out.println(list.get(0));

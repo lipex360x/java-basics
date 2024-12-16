@@ -35,25 +35,17 @@ public class DoubleChainedList<T> extends Utils<T> {
       this.firstNode.setPrev(node);
       this.firstNode = node;
     } else {
-      
+      Node<T> oldNode = this.readPosition(index);
+      oldNode.getPrev().setNext(node);
+      node.setPrev(oldNode.getPrev());
+      node.setNext(oldNode);
+      node.getNext().setPrev(node);
     }
-
-    // if (index == 0) {
-    //   Node<T> auxNode = this.firstNode;
-    //   node.setNext(auxNode);
-    //   auxNode.setPrev(node);
-    //   System.out.println(node);
-    // }
-    // Node<T> auxNode = this.readPosition(index);
-    // System.out.println(firstNode.getPrev() + " <---- "  + auxNode + " ----> " + firstNode.getNext());
     this.listSize++;
   }
 
   public T get(int index) {
     this.validateIndex(index);
-    // Node<T> node = this.readPosition(index);
-    // System.out.println(node.getPrev() + " <---- "  + node + " ----> " + node.getNext());
-    // System.out.println(node.getPrev() + " ----> "  + node + " <---- " + node.getNext());
     return this.readPosition(index).getContent();
   }
 
