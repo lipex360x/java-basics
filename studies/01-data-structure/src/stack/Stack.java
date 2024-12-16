@@ -1,11 +1,13 @@
 package stack;
 
 import node.Node;
+import utils.Utils;
 
-public class Stack<T> {
+public class Stack<T> extends Utils<T> {
   Node<T> referenceNode;
 
   public Stack() {
+    super();
     this.referenceNode = null;
   }
 
@@ -17,13 +19,13 @@ public class Stack<T> {
     Node<T> lastNode = this.referenceNode;
     Node<T> newNode = new Node<>(content);
     this.referenceNode = newNode;
-    this.referenceNode.setReferenceNode(lastNode);
+    this.referenceNode.setReference(lastNode);
   }
 
   public Node<T> pop() {
     if (this.isEmpty()) return null;
     Node<T> removedNode = this.referenceNode;
-    this.referenceNode = this.referenceNode.getReferenceNode();
+    this.referenceNode = this.referenceNode.getReference();
     return removedNode;
   }
 
@@ -33,20 +35,11 @@ public class Stack<T> {
 
   @Override
   public String toString() {
-    String returnString = "-----------------\n";
-    returnString += "      Stack\n";
-    returnString += "-----------------\n";
+    String returnString = this.divisor(17, "-") + "\n";
+    returnString += this.divisor(6) + "Stack\n";
+    returnString += this.divisor(17, "-") + "\n";
     returnString += this.getNodeData(this.referenceNode);
-    returnString += "=================";
+    returnString += this.divisor(17, "=");
     return returnString;
-  }
-
-  private String getNodeData(Node<T> currentNode) {
-    if(currentNode == null) return "";
-    String returnString = String.format("%5s", "");
-    returnString += currentNode.getContent();
-    returnString += "\n";
-    returnString += this.getNodeData(currentNode.getReferenceNode());
-    return returnString;
-  }
+  }  
 }

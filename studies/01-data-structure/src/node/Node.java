@@ -2,13 +2,13 @@ package node;
 
 public class Node<T> {
   private T content;
-  private Node<T> referenceNode;
-  private Node<T> prevNode;
-  private Node<T> nextNode;
+  private Node<T> reference;
+  private Node<T> prev;
+  private Node<T> next;
 
   public Node(T content) {
-    this.prevNode = null;
-    this.nextNode = null;
+    this.prev = null;
+    this.next = null;
     this.content = content;
   }
 
@@ -20,28 +20,28 @@ public class Node<T> {
     this.content = content;
   }
 
-  public Node<T> getReferenceNode() {
-    return this.referenceNode;
+  public Node<T> getReference() {
+    return this.reference;
   }
 
-  public void setReferenceNode(Node<T> referenceNode) {
-    this.referenceNode = referenceNode;
+  public void setReference(Node<T> node) {
+    this.reference = node;
   }
 
-  public Node<T> getPrevNode() {
-    return this.prevNode;
+  public Node<T> getPrev() {
+    return this.prev;
   }
 
-  public void setPrevNode(Node<T> prevNode) {
-    this.prevNode = prevNode;
+  public void setPrev(Node<T> node) {
+    this.prev = node;
   }
 
-  public Node<T> getNextNode() {
-    return this.nextNode;
+  public Node<T> getNext() {
+    return this.next;
   }
 
-  public void setNextNode(Node<T> nextNode) {
-    this.nextNode = nextNode;
+  public void setNext(Node<T> node) {
+    this.next = node;
   }
 
   public String toString() {
@@ -50,11 +50,11 @@ public class Node<T> {
 
   public String chainedToString() {
     String str = this.toString();
-    str += !isNextNodeNull() ? "-->" + this.nextNode.toString() : "--> null";
+    str += !isNextNull() ? "-->" + this.next.toString() : "--> null";
     return str;
   }
 
-  private boolean isNextNodeNull() {
-    return this.nextNode == null;
+  private boolean isNextNull() {
+    return this.next == null;
   }
 }
