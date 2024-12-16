@@ -31,4 +31,14 @@ public class Utils<T> {
     returnString += this.getListData(currentNode.getNext());
     return returnString;
   }
+
+  protected String getCircularList(Node<T> tailNode, int listSize) {
+    String returnString = "";
+    Node<T> auxNode = tailNode;
+    for (int i = 0; i < listSize; i++) {
+      returnString += this.divisor(5) + auxNode.getContent() + "\n";
+      auxNode = auxNode.getNext();
+    }
+    return returnString;
+  }
 }
